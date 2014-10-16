@@ -83,12 +83,12 @@ void reverseWords(string &s) {
 //		!five- ~four three? +two one. 29
 void _reverseWords(string& s) {
 	string reverse;
-	int j = s.size();
+	int j = s.size(); //j is end pos
 	for (int i = j - 1; i >= 0; --i) {
 		if (s[i] == ' ')
-			j = i;
+			j = i;//update end pos
 		else if (i == 0 || s[i - 1] == ' ') {
-			if (!reverse.empty())
+			if (!reverse.empty())//note empty string
 				reverse += ' ';
 			reverse.append(s.substr(i, j - i));
 		}

@@ -97,7 +97,7 @@ void _reverseWords(string& s) {
 }
 
 
-int main(int argc, char **argv) {
+int _main(int argc, char **argv) {
 
 	std::string s = "   one.   +two three?   ~four   !five- ";
 	cout << s << endl;

@@ -1,21 +1,21 @@
 /*
-Reverse Words in a String
+ Reverse Words in a String
 
-Given an input string, reverse the string word by word.
+ Given an input string, reverse the string word by word.
 
-For example,
-Given s = "the sky is blue",
-return "blue is sky the".
+ For example,
+ Given s = "the sky is blue",
+ return "blue is sky the".
 
-click to show clarification.
+ click to show clarification.
 
-Clarification:
-What constitutes a word?
-A sequence of non-space characters constitutes a word.
-Could the input string contain leading or trailing spaces?
-Yes. However, your reversed string should not contain leading or trailing spaces.
-How about multiple spaces between two words?
-Reduce them to a single space in the reversed string.
+ Clarification:
+ What constitutes a word?
+ A sequence of non-space characters constitutes a word.
+ Could the input string contain leading or trailing spaces?
+ Yes. However, your reversed string should not contain leading or trailing spaces.
+ How about multiple spaces between two words?
+ Reduce them to a single space in the reversed string.
  */
 
 #include <iostream>
@@ -86,9 +86,9 @@ void _reverseWords(string& s) {
 	int j = s.size(); //j is end pos
 	for (int i = j - 1; i >= 0; --i) {
 		if (s[i] == ' ')
-			j = i;//update end pos
+			j = i; //update end pos
 		else if (i == 0 || s[i - 1] == ' ') {
-			if (!reverse.empty())//note empty string
+			if (!reverse.empty()) //note empty string
 				reverse += ' ';
 			reverse.append(s.substr(i, j - i));
 		}
@@ -96,12 +96,11 @@ void _reverseWords(string& s) {
 	s = reverse;
 }
 
-
-int _main(int argc, char **argv) {
-
-	std::string s = "   one.   +two three?   ~four   !five- ";
-	cout << s << endl;
-	_reverseWords(s);
-	cout << s << " " << s.size();
-	return 0;
-}
+//int _main(int argc, char **argv) {
+//
+//	std::string s = "   one.   +two three?   ~four   !five- ";
+//	cout << s << endl;
+//	_reverseWords(s);
+//	cout << s << " " << s.size();
+//	return 0;
+//}

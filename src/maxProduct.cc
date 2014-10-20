@@ -111,9 +111,9 @@ int maxProduct2(int A[], int n) {
 	}
 	return maxAns;
 }
-
-int _main() {
-	int A[] = { 2, 3, -2, 4 };
-	std::cout << maxProduct(A, 4) << std::endl;
-	return 0;
-}
+//
+//int _main() {
+//	int A[] = { 2, 3, -2, 4 };
+//	std::cout << maxProduct(A, 4) << std::endl;
+//	return 0;
+//}

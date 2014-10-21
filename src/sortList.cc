@@ -87,8 +87,10 @@ public:
 	ListNode *sortList(ListNode* head) {
 		if (head == NULL || head->next == NULL)
 			return head;
+
 		ListNode* slow = head, *fast = head;
-		while (fast != NULL && fast->next != NULL && fast->next->next != NULL) {
+		//Note:如果没有fast->next->next != NULL 则会在只有两个元素的情况下陷入无线递归
+		while (fast != NULL && fast->next != NULL  && fast->next->next != NULL) {
 			fast = fast->next->next;
 			slow = slow->next;
 		}
@@ -102,21 +104,6 @@ public:
 	ListNode *insertionSortList(ListNode *head) {
 		if (head == NULL || head->next == NULL)
 			return head;
-//		ListNode *start = head->next;
-//		for(ListNode *p = head->next; p != NULL; p = p->next) {
-//			ListNode *q = start;
-//			while(q != p && p->val > q->val) {
-//				q = q->next;
-//			}
-//
-//		}
-
-//
-//		ListNode *insertionSortList(ListNode *head) {
-//
-//		        if(head == NULL || head->next == NULL)
-//		            return head;
-
 		ListNode dummy(INT_MIN);
 		dummy.next = head;
 		head = &dummy;

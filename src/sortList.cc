@@ -99,25 +99,10 @@ public:
 		return merge(first, second);
 	}
 
-	ListNode *insertionSortList(ListNode *head) {
+	ListNode *_insertionSortList(ListNode *head) {
 		if (head == NULL || head->next == NULL)
 			return head;
-//		ListNode *start = head->next;
-//		for(ListNode *p = head->next; p != NULL; p = p->next) {
-//			ListNode *q = start;
-//			while(q != p && p->val > q->val) {
-//				q = q->next;
-//			}
-//
-//		}
-
-//
-//		ListNode *insertionSortList(ListNode *head) {
-//
-//		        if(head == NULL || head->next == NULL)
-//		            return head;
-
-		ListNode dummy(INT_MIN);
+		ListNode dummy(0);
 		dummy.next = head;
 		head = &dummy;
 
@@ -141,22 +126,45 @@ public:
 		return head->next;
 	}
 
-};
+	ListNode *insertionSortList(ListNode *head) {
+		if (head == NULL || head->next == NULL)
+			return head;
+		ListNode dummy(0);
+		dummy.next = head;
+		head = &dummy;
+		ListNode *p = head->next;
+		head->next = NULL;//set null
+		for (; p != NULL;) {
+			ListNode *q = head;
+			ListNode *next = p->next;
+			p->next = NULL;
+			//note : head->next = null
+			while (q->next && q->next->val <= p->val)
+				q = q->next;
+			p->next = q->next;
+			q->next = p;
 
-int main(int argc, char **argv) {
-
-	ListNode l1(3), l2(100), l3(1);
-	l1.next = &l2;
-	l2.next = &l3;
-	l3.next = NULL;
-
-	ListNode *p = Solution().sortList(&l1);
-
-	//cout << l1.val << ' ' << l2.val << ' ' << l3.val << endl;
-	while (p) {
-		cout << p->val << ' ';
-		p = p->next;
+			p = next;
+		}
+		return head->next;
 	}
-	return 0;
-}
+
+};
+//
+//int main(int argc, char **argv) {
+//
+//	ListNode l1(3), l2(100), l3(1);
+//	l1.next = &l2;
+//	l2.next = &l3;
+//	l3.next = NULL;
+//
+//	ListNode *p = Solution().insertionSortList(&l1);
+//
+//	//cout << l1.val << ' ' << l2.val << ' ' << l3.val << endl;
+//	while (p) {
+//		cout << p->val << ' ';
+//		p = p->next;
+//	}
+//	return 0;
+//}
 

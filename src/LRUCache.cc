@@ -6,6 +6,8 @@
  set(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
  */
 #include <iostream>
+#include <list>
+#include <unordered_map>
 #include <cstdlib>
 #include <cstring>
 
@@ -138,33 +140,111 @@ public:
 		delete[] table;
 	}
 };
+//typedef list<int> List;
+//typedef list<int>::iterator Iterator;
+//typedef pair<int,Iterator> Pair;
+//typedef unordered_map<int, Pair> Map;
+//
+//class LRUCache{
+//public:
+//    Map map;
+//    List llist;
+//    int MAXCAP;
+//    LRUCache(int capacity):MAXCAP(capacity) {
+//    }
+//
+//    int get(int key) {
+//        auto it = map.find(key);
+//        if(it==map.end()) return -1;
+//        auto &kv = it->second;
+//        llist.erase(kv.second);
+//        llist.push_front(key);
+//        kv.second=llist.begin();
+//        return kv.first;
+//    }
+//
+//    void set(int key, int value) {
+//        auto it = map.find(key);
+//        if(it==map.end()){
+//            if(map.size()>=MAXCAP){
+//                map.erase(llist.back());
+//                llist.pop_back();
+//            }
+//            llist.push_front(key);
+//            map.insert(make_pair(key,Pair(value,llist.begin())));
+//        }
+//        else{
+//            auto &kv = it->second;
+//            llist.erase(kv.second);
+//            llist.push_front(key);
+//            kv.second=llist.begin();
+//            kv.first=value;
+//        }
+//    }
+//};
+class LRUCache1 {
+public:
+	list<int> link;
+	unordered_map<int, pair<int, list<int>::iterator>> cache;
+	size_t capacity;
+public:
+	LRUCache1(size_t _capacity) :
+			capacity(_capacity) {
+	}
+
+	void set(int key, int value) {
+		auto pos = cache.find(key);
+		if (pos == cache.end()) {
+			link.push_front(key);
+			cache[key] = make_pair(value, link.begin());
+			if (cache.size() > capacity) {
+				cache.erase(link.back());
+				link.pop_back();
+			}
+		} else {
+			auto it = pos->second.second;
+			link.erase(it);
+			link.push_front(key);
+			pos->second.second = link.begin();
+			pos->second.first = value;
+		}
+	}
+
+	int get(int key) {
+		auto pos = cache.find(key);
+		if (pos != cache.end()) {
+			link.erase(pos->second.second);
+			link.push_front(key);
+			pos->second.second = link.begin();
+			return pos->second.first;
+		}
+		return -1;
+	}
+
+};
 
 int main(int argc, char **argv) {
+//2,[set(2,1),set(2,2),get(2),set(1,1),set(4,1),get(2)]
 
-	LRUCache cache(10);
-	cache.set(1, 3);
-	cache.set(2, 3);
-	cache.set(3, 3);
-	cache.set(4, 3);
-	cache.set(5, 3);
-	cache.set(6, 3);
-	cache.set(7, 3);
-	cache.set(8, 3);
-	cache.set(9, 3);
-	cache.set(10, 3);
-	cout << cache.get(1) << endl;
-	cache.set(11, 3);
-	cout << cache.get(1) << endl;
-	cout << "crash" << endl;
+	LRUCache1 cache(2);
+	cache.set(2, 1);
+
 	cout << cache.get(2) << endl;
-	//[get(2),set(2,6),get(1),set(1,5),set(1,2),get(1),get(2)]
-	cout << cache.get(2) << endl;
-	cache.set(2, 6);
-	cout << cache.get(1) << endl;
-	cache.set(1, 5);
-	cout << cache.get(1) << endl;
-	cout << cache.get(2) << endl;
-	cout << "end" << endl;
+
+//	cache.set(2, 1);
+//	cout << cache.get(2) << endl;
+//	for (int i = 0; i < 19; ++i) {
+//		cache.set(i, i);
+//	}
+//	for (auto v : cache.link) {
+//		cout << v << '\t';
+//	}
+//	cout << endl;
+//
+//	for (int i = 0; i < 19; ++i) {
+//		cout << cache.get(i) << '\t';
+//	}
+	cout << endl;
 	return 0;
 }
 

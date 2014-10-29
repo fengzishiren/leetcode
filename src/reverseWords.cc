@@ -96,11 +96,11 @@ void _reverseWords(string& s) {
 	s = reverse;
 }
 
-//int _main(int argc, char **argv) {
-//
-//	std::string s = "   one.   +two three?   ~four   !five- ";
-//	cout << s << endl;
-//	_reverseWords(s);
-//	cout << s << " " << s.size();
-//	return 0;
-//}
+int _main(int argc, char **argv) {
+
+	std::string s = "   one.   +two three?   ~four   !five- ";
+	cout << s << endl;
+	_reverseWords(s);
+	cout << s << " " << s.size();
+	return 0;
+}

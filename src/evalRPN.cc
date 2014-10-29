@@ -63,10 +63,10 @@ public:
 	}
 };
 
-//int _main(int argc, char **argv) {
-//
-//	vector<string> toks = { "-1", "1", "*", "-1", "+" }; //{ "4", "13", "5", "/", "+" }; // {"2", "1", "+", "3", "*"};
-//	cout << Solution().evalRPN(toks) << endl;
-//	return 0;
-//}
+int _main(int argc, char **argv) {
+
+	vector<string> toks = { "-1", "1", "*", "-1", "+" }; //{ "4", "13", "5", "/", "+" }; // {"2", "1", "+", "3", "*"};
+	cout << Solution().evalRPN(toks) << endl;
+	return 0;
+}
 

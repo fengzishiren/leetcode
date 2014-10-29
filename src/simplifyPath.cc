@@ -47,9 +47,9 @@ public:
 		return sp.empty() ? "/" : sp;
 	}
 };
-//int main(int argc, char **argv) {
-//	string s = Solution().simplifyPath("///");
-//	cout << "KEY: " << s << endl;
-//
-//	return 0;
-//}
+int main(int argc, char **argv) {
+	string s = Solution().simplifyPath("///");
+	cout << "KEY: " << s << endl;
+
+	return 0;
+}

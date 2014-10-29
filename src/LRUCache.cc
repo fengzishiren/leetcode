@@ -224,28 +224,28 @@ public:
 
 };
 
-//int main(int argc, char **argv) {
-////2,[set(2,1),set(2,2),get(2),set(1,1),set(4,1),get(2)]
-//
-//	LRUCache1 cache(2);
+int main(int argc, char **argv) {
+//2,[set(2,1),set(2,2),get(2),set(1,1),set(4,1),get(2)]
+
+	LRUCache1 cache(2);
+	cache.set(2, 1);
+
+	cout << cache.get(2) << endl;
+
 //	cache.set(2, 1);
-//
 //	cout << cache.get(2) << endl;
-//
-////	cache.set(2, 1);
-////	cout << cache.get(2) << endl;
-////	for (int i = 0; i < 19; ++i) {
-////		cache.set(i, i);
-////	}
-////	for (auto v : cache.link) {
-////		cout << v << '\t';
-////	}
-////	cout << endl;
-////
-////	for (int i = 0; i < 19; ++i) {
-////		cout << cache.get(i) << '\t';
-////	}
+//	for (int i = 0; i < 19; ++i) {
+//		cache.set(i, i);
+//	}
+//	for (auto v : cache.link) {
+//		cout << v << '\t';
+//	}
 //	cout << endl;
-//	return 0;
-//}
+//
+//	for (int i = 0; i < 19; ++i) {
+//		cout << cache.get(i) << '\t';
+//	}
+	cout << endl;
+	return 0;
+}
 

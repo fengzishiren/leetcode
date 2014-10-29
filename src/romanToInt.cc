@@ -140,12 +140,12 @@ public:
 	}
 
 };
-//
-//int main(int argc, char **argv) {
-//
-//	string s = "MCDXXXVII";
-//	int V = Solution().romanToInt(s);
-//	cout << V << endl;
-//	return 0;
-//}
+
+int main(int argc, char **argv) {
+
+	string s = "MCDXXXVII";
+	int V = Solution().romanToInt(s);
+	cout << V << endl;
+	return 0;
+}
 

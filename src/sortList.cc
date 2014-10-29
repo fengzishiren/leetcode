@@ -152,23 +152,23 @@ public:
 	}
 
 };
-//
-//int main(int argc, char **argv) {
-//
-//	ListNode l1(3), l2(100), l3(1);
-//	l1.next = &l2;
-//	l2.next = &l3;
-//	l3.next = NULL;
-//
-//	ListNode *p = Solution().insertionSortList(&l1);
-//
-//	//cout << l1.val << ' ' << l2.val << ' ' << l3.val << endl;
-//	while (p) {
-//		cout << p->val << ' ';
-//		p = p->next;
-//	}
-//	return 0;
-//}
+
+int main(int argc, char **argv) {
+
+	ListNode l1(3), l2(100), l3(1);
+	l1.next = &l2;
+	l2.next = &l3;
+	l3.next = NULL;
+
+	ListNode *p = Solution().insertionSortList(&l1);
+
+	//cout << l1.val << ' ' << l2.val << ' ' << l3.val << endl;
+	while (p) {
+		cout << p->val << ' ';
+		p = p->next;
+	}
+	return 0;
+}
 
 //test clion
 

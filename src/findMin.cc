@@ -54,10 +54,10 @@ public:
 	}
 };
 
-//int main(int argc, char **argv) {
-//	vector<int> num = { 4, 5, 6, 7, 0, 1, 2 };
-//	cout << Solution().findMin(num);
-//
-//	return 0;
-//}
+int main(int argc, char **argv) {
+	vector<int> num = { 4, 5, 6, 7, 0, 1, 2 };
+	cout << Solution().findMin(num);
+
+	return 0;
+}
 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <unordered_set>
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
@@ -71,6 +72,39 @@ public:
     }
 
     //plus
+    /*
+
+Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
+
+Return all such possible sentences.
+
+For example, given
+s = "catsanddog",
+dict = ["cat", "cats", "and", "sand", "dog"].
+
+A solution is ["cats and dog", "cat sand dog"].
+
+     */
+    vector<string> wordBreakII(string s, unordered_set<string> &dict) {
+        int n = s.length();
+        vector<string> vt[n + 1];
+        if (n == 0 || dict.empty()) return vt[0];
+        for (int i = n - 1; i >= 0; --i) {
+            vector<string> wd;
+            for (int j = i; j < n; ++j) {
+                string seg = s.substr(i, j - i + 1);
+                vector<string> a(vt[j + 1]);
+                if (dict.find(seg) != dict.end()) {
+                    for (size_t k = 0; k < a.size(); ++k) {
+                        wd.push_back(a[k].empty() ? seg : seg + ' ' + a[k]);
+                    }
+                }
+
+            }
+            vt[i] = wd;
+        }
+        return vt[0];
+    }
 
 };
 
